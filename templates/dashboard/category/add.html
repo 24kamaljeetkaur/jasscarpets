@@ -1,0 +1,132 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Add Category{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+
+            <div class="card shadow">
+
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">Add Category</h4>
+
+                    <a href="{% url 'category_list' %}" class="btn btn-secondary btn-sm">
+                        Back
+                    </a>
+                </div>
+
+                <div class="card-body">
+
+                    <form method="POST" enctype="multipart/form-data">
+
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                Category Name
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="name"
+                                id="name"
+                                placeholder="Enter Category Name"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">
+                                Slug
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="slug"
+                                id="slug"
+                                placeholder="Enter Slug"
+                                required>
+                        </div>
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Category Image
+                            </label>
+
+                            <input
+                                type="file"
+                                class="form-control"
+                                name="image"
+                                accept="image/*"
+                                onchange="previewImage(event)"
+                                required>
+
+                        </div>
+
+                        <div class="mb-3 text-center">
+
+                            <img
+                                id="preview"
+                                src=""
+                                class="img-thumbnail"
+                                style="display:none;width:180px;">
+
+                        </div>
+
+                        <div class="form-check mb-4">
+
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                name="status"
+                                id="status"
+                                checked>
+
+                            <label class="form-check-label" for="status">
+                                Active
+                            </label>
+
+                        </div>
+
+                        <button class="btn btn-success">
+                            Save Category
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+function previewImage(event){
+
+    let reader = new FileReader();
+
+    reader.onload = function(){
+
+        let output = document.getElementById("preview");
+
+        output.src = reader.result;
+
+        output.style.display = "block";
+
+    }
+
+    reader.readAsDataURL(event.target.files[0]);
+
+}
+
+</script>
+
+{% endblock %}

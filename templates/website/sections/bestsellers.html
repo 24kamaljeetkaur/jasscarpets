@@ -1,0 +1,66 @@
+<section id="bestsellers">
+   <div class="wrap">
+      <div class="section-head reveal">
+         <div>
+            <p class="eyebrow">Bestsellers</p>
+            <h2>Loved by our customers</h2>
+         </div>
+         <a href="#shop" class="view-all">View All →</a>
+      </div>
+      <div class="prod-grid reveal">
+
+{% for product in products %}
+
+<div class="prod-card">
+
+    <div class="prod-media">
+
+        <img
+            src="{{ product.image.url }}"
+            alt="{{ product.name }}"
+            style="width:100%;height:100%;object-fit:cover;"
+        >
+
+    </div>
+
+    <div class="prod-info">
+
+        <span class="cat-tag">
+
+            {{ product.category.name }}
+
+        </span>
+
+        <h3>{{ product.name }}</h3>
+
+        <div class="price-row">
+
+            <span class="price-now">
+
+                ₹{{ product.price }}
+
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+   </div>
+</section>
+<section id="shop">
+   <div class="wrap">
+      <div class="promo reveal">
+         <div class="promo-copy">
+            <p class="eyebrow">Limited Time</p>
+            <h2>Flat 20% off bespoke orders</h2>
+            <p>Tell us your size, palette and motif — we'll weave it to order and ship it to your door.</p>
+         </div>
+         <a href="#" class="btn btn--solid">Customise Your Rug</a>
+      </div>
+   </div>
+</section>

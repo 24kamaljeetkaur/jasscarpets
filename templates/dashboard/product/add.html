@@ -1,0 +1,37 @@
+<form method="post" enctype="multipart/form-data">
+
+{% csrf_token %}
+
+<select name="category">
+
+{% for c in categories %}
+<option value="{{ c.id }}">{{ c.name }}</option>
+{% endfor %}
+
+</select>
+
+<input type="text" name="name" placeholder="Product Name">
+
+<input type="number" name="price">
+
+<input type="number" name="old_price">
+
+<input type="number" name="quantity">
+
+<textarea name="short_description"></textarea>
+
+<input type="file" name="image">
+
+<label>
+<input type="checkbox" name="featured">
+Featured
+</label>
+
+<label>
+<input type="checkbox" name="status" checked>
+Active
+</label>
+
+<button>Add Product</button>
+
+</form>

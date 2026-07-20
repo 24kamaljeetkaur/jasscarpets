@@ -1,0 +1,38 @@
+<section id="categories">
+    <div class="wrap">
+
+        <div class="section-head">
+            <div>
+                <p class="eyebrow">Categories</p>
+                <h2>Browse by Collection</h2>
+            </div>
+        </div>
+
+        <div class="cat-grid">
+
+            {% for category in categories %}
+
+            <a href="#" class="cat-card">
+
+                <div class="pattern">
+                    {% if category.image %}
+                        <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                    {% endif %}
+                </div>
+
+                <div class="overlay"></div>
+
+                <span>{{ category.name }}</span>
+
+            </a>
+
+            {% empty %}
+
+            <p>No categories found.</p>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+</section>

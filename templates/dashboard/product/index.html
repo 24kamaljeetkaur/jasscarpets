@@ -1,0 +1,29 @@
+<h2>Products</h2>
+
+<a href="{% url 'product_add' %}">Add Product</a>
+
+<table border="1">
+<tr>
+    <th>Image</th>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Price</th>
+</tr>
+
+{% for p in products %}
+<tr>
+
+<td>
+<img src="{{ p.image.url }}" width="80">
+</td>
+
+<td>{{ p.name }}</td>
+
+<td>{{ p.category.name }}</td>
+
+<td>{{ p.price }}</td>
+
+</tr>
+{% endfor %}
+
+</table>

@@ -1,0 +1,95 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="d-flex justify-content-between mb-3">
+
+        <h3>Categories</h3>
+
+        <a href="{% url 'category_add' %}" class="btn btn-primary">
+            Add Category
+        </a>
+
+    </div>
+
+    <table class="table table-bordered">
+
+        <thead>
+
+            <tr>
+
+                <th>ID</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for category in categories %}
+
+        <tr>
+
+            <td>{{ category.id }}</td>
+
+            <td>
+
+                {% if category.image %}
+                    <img src="{{ category.image.url }}" width="70">
+                {% endif %}
+
+            </td>
+
+            <td>{{ category.name }}</td>
+
+            <td>
+
+                {% if category.status %}
+                    Active
+                {% else %}
+                    Inactive
+                {% endif %}
+
+            </td>
+
+            <td>
+
+                <a href="{% url 'category_edit' category.id %}" class="btn btn-warning btn-sm">
+                    Edit
+                </a>
+
+                <a href="{% url 'category_delete' category.id %}" class="btn btn-danger btn-sm">
+                    Delete
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% empty %}
+
+        <tr>
+
+            <td colspan="5" class="text-center">
+
+                No Categories Found
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

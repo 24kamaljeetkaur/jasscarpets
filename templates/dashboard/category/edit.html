@@ -1,0 +1,95 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+<div class="card shadow">
+
+<div class="card-header bg-warning">
+
+<h4>Edit Category</h4>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST"
+      enctype="multipart/form-data">
+
+{% csrf_token %}
+
+<div class="mb-3">
+
+<label>Name</label>
+
+<input
+type="text"
+name="name"
+value="{{ category.name }}"
+class="form-control">
+
+</div>
+
+<div class="mb-3">
+
+<label>Current Image</label>
+
+<br>
+
+<img
+src="{{ category.image.url }}"
+width="120"
+class="img-thumbnail">
+
+</div>
+
+<div class="mb-3">
+
+<label>Change Image</label>
+
+<input
+type="file"
+name="image"
+class="form-control">
+
+</div>
+
+<div class="form-check mb-3">
+
+<input
+type="checkbox"
+name="status"
+class="form-check-input"
+{% if category.status %}checked{% endif %}>
+
+<label class="form-check-label">
+
+Active
+
+</label>
+
+</div>
+
+<button class="btn btn-primary">
+
+Update
+
+</button>
+
+<a href="{% url 'category_list' %}"
+class="btn btn-secondary">
+
+Back
+
+</a>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

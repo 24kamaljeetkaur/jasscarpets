@@ -1,0 +1,58 @@
+<div class="prod-grid">
+
+{% for product in products %}
+
+<div class="prod-card">
+
+    <div class="prod-media">
+
+        <img
+            src="{{ product.image.url }}"
+            alt="{{ product.name }}"
+        >
+
+    </div>
+
+    <div class="prod-info">
+
+        <span class="cat-tag">
+
+            {{ product.category.name }}
+
+        </span>
+
+        <h3>{{ product.name }}</h3>
+
+        <div class="price-row">
+
+            <span class="price-now">
+
+                ₹{{ product.price }}
+
+            </span>
+
+            {% if product.old_price %}
+
+            <span class="price-was">
+
+                ₹{{ product.old_price }}
+
+            </span>
+
+            {% endif %}
+
+        </div>
+
+        <button class="add-cart">
+
+            Add To Cart
+
+        </button>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
